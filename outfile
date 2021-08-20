@@ -1,1 +1,2 @@
-get_cmd.c
+get_path.c
+pipex.h

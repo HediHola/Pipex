@@ -6,7 +6,7 @@
 /*   By: htizi <htizi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 14:39:28 by htizi             #+#    #+#             */
-/*   Updated: 2021/08/20 02:07:09 by htizi            ###   ########.fr       */
+/*   Updated: 2021/08/20 14:29:00 by htizi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	first_var_init(t_tab *var, char **env, char **argv)
 {	
-	var->path = get_path(env);
+	var->paths_tab = get_paths_tab(env);
 	var->cmd = get_cmd(argv[2]);
-	var->cmd_path = get_cmd_path(var->cmd, var->path);
+	var->cmd_path = get_cmd_path(var->cmd, var->paths_tab);
 	var->str[0] = var->cmd_path;
 	if (!var->str[0])
 		var->str[0] = var->cmd;

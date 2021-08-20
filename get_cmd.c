@@ -6,13 +6,13 @@
 /*   By: htizi <htizi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:51:19 by htizi             #+#    #+#             */
-/*   Updated: 2021/08/20 02:00:15 by htizi            ###   ########.fr       */
+/*   Updated: 2021/08/20 14:13:56 by htizi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_strndup(char *src, size_t n)
+char	*ft_strndup(char *src, int n)
 {
 	int		i;
 	char	*dest;

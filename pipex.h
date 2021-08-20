@@ -6,7 +6,7 @@
 /*   By: htizi <htizi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 22:37:00 by htizi             #+#    #+#             */
-/*   Updated: 2021/08/20 14:28:45 by htizi            ###   ########.fr       */
+/*   Updated: 2021/08/20 22:06:24 by htizi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PIPEX_H
@@ -19,6 +19,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
+# include <errno.h>
 
 typedef struct s_tab
 {
@@ -30,9 +31,16 @@ typedef struct s_tab
 	int		file;
 	int		status;
 	int		ext;
+	int		ret;
+	int		vinc;
+	pid_t	first_pid;
+	pid_t	last_pid;
 }t_tab;
 void	exit_pipex(t_tab *var, int code);
+void	execve_error(t_tab *var);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_bzero(void *s, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		first_var_init(t_tab *var, char **env, char **argv);
 int		last_var_init(t_tab *var, char **argv);
 int		first_fork(char **argv, char **env, t_tab *var);

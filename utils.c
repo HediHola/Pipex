@@ -6,11 +6,26 @@
 /*   By: htizi <htizi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 21:17:46 by htizi             #+#    #+#             */
-/*   Updated: 2021/08/20 00:28:27 by htizi            ###   ########.fr       */
+/*   Updated: 2021/08/20 15:58:50 by htizi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*tmp;
+
+	if (n == 0)
+		return ;
+	tmp = (unsigned char *)s;
+	while (n > 0)
+	{
+		*tmp = 0;
+		tmp++;
+		n--;
+	}
+}
 
 void	ft_putstr_fd(char *s, int fd)
 {

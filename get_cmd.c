@@ -6,7 +6,7 @@
 /*   By: htizi <htizi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:51:19 by htizi             #+#    #+#             */
-/*   Updated: 2021/08/20 14:13:56 by htizi            ###   ########.fr       */
+/*   Updated: 2021/08/20 22:45:03 by htizi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,9 @@ char	*get_cmd_path(char *cmd, char **path)
 	int		path_len;
 	int		i;
 	char	*cmd_path;
+	int		j;
 
+	j = 0;
 	cmd_len = ft_strlen(cmd);
 	i = 0;
 	while (path[i])

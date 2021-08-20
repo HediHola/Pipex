@@ -1,2 +1,10 @@
+a.out
+exit_pipex.c
+first_fork.c
+first_var_init.c
+get_cmd.c
 get_path.c
-pipex.h
+last_fork.c
+last_var_init.c
+outfile
+utils.c

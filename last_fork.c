@@ -6,7 +6,7 @@
 /*   By: htizi <htizi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 12:11:27 by htizi             #+#    #+#             */
-/*   Updated: 2021/08/20 14:24:06 by htizi            ###   ########.fr       */
+/*   Updated: 2021/08/20 22:50:57 by htizi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,37 @@
 
 int	last_fork(char **argv, char **env, t_tab *var)
 {
-	pid_t	last_pid;
-
-	last_var_init(var, argv);
-	last_pid = fork();
-	if (last_pid == 0)
+	var->ret = last_var_init(var, argv);
+	if (var->ret == -2)
+		exit_pipex(var, var->ret);
+	if (var->ret == -1)
+		exit_pipex(var, 667);
+	if (var->cmd != NULL)
 	{
-		dup2(var->fd[0], STDIN_FILENO);
-		dup2(var->file, STDOUT_FILENO);
-		close(var->fd[1]);
-		if (execve(var->str[0], var->str, env) == -1)
+		var->last_pid = fork();
+		if (var->last_pid == 0)
 		{
-			perror("pipex");
-			exit_pipex(var, 1);
+			dup2(var->fd[0], STDIN_FILENO);
+			dup2(var->file, STDOUT_FILENO);
+			close(var->fd[1]);
+			if (execve(var->str[0], var->str, env) == -1)
+				execve_error(var);
 		}
 	}
-	waitpid(last_pid, &var->status, 0);
-	if (WIFEXITED(var->status))
-		var->ext = WEXITSTATUS(var->status);
 	close(var->fd[0]);
-	close(var->file);
+	exit_pipex(var, 666);
+	if (var->vinc == 1)
+	{	
+		waitpid(var->first_pid, &var->status, 0);
+		if (WIFEXITED(var->status))
+			var->ext = WEXITSTATUS(var->status);
+	}
+	if (var->cmd != NULL)
+	{
+		waitpid(var->last_pid, &var->status, 0);
+		if (WIFEXITED(var->status))
+			var->ext = WEXITSTATUS(var->status);
+	}
 	exit_pipex(var, 0);
 	return (0);
 }

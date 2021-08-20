@@ -6,7 +6,7 @@
 /*   By: htizi <htizi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 01:12:49 by htizi             #+#    #+#             */
-/*   Updated: 2021/08/20 14:31:18 by htizi            ###   ########.fr       */
+/*   Updated: 2021/08/20 23:05:04 by htizi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,24 @@ void	free_tab(char **paths_tab)
 
 void	exit_pipex(t_tab *var, int code)
 {
-	free(var->cmd);
-	free(var->cmd_path);
-	free_tab(var->paths_tab);
-	free(var->str[1]);
-	if (code == 1)
+	if (code == -1 || code == -2)
+		perror("pipex");
+	if (code == 666 || code == 667 || code == 1)
+	{
+		free(var->cmd);
+		free(var->cmd_path);
+		free(var->str[1]);
+		if (code != 1)
+			close(var->file);
+	}
+	if (code == 1 || code == 0 || code == 667 || code == -2)
+		free_tab(var->paths_tab);
+	if (code == 667 || code == -2)
+		exit (1);
+	if (code == 1 && (errno == 2 || errno == 13))
 		exit (127);
-	exit (var->ext);
+	if (code == 1)
+		exit (1);
+	if (code == 0)
+		exit (var->ext);
 }

@@ -6,11 +6,26 @@
 /*   By: htizi <htizi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 21:17:46 by htizi             #+#    #+#             */
-/*   Updated: 2021/08/19 02:39:57 by htizi            ###   ########.fr       */
+/*   Updated: 2021/08/20 00:28:27 by htizi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+		{
+			write(fd, &s[i], 1);
+			i++;
+		}
+	}
+}
 
 int	ft_strlen(char *str)
 {

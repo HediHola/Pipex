@@ -6,14 +6,15 @@
 #    By: htizi <htizi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/20 19:10:02 by htizi             #+#    #+#              #
-#    Updated: 2021/08/20 20:13:35 by htizi            ###   ########.fr        #
+#    Updated: 2021/08/21 15:21:22 by htizi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME				=	pipex
-SRCS_DIR			=	./
-INC_DIR				=	./
-SRCS				=	get_path.c			\
+SRCS_DIR			=	./srcs/
+INC_DIR				=	./inc/
+SRCS				=	close_pipex.c		\
+						get_path.c			\
 						get_cmd.c			\
 						execve_error.c		\
 						utils.c				\

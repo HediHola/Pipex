@@ -6,7 +6,7 @@
 /*   By: htizi <htizi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 22:37:00 by htizi             #+#    #+#             */
-/*   Updated: 2021/08/20 22:06:24 by htizi            ###   ########.fr       */
+/*   Updated: 2021/08/20 23:25:29 by htizi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PIPEX_H
@@ -36,6 +36,7 @@ typedef struct s_tab
 	pid_t	first_pid;
 	pid_t	last_pid;
 }t_tab;
+void	close_pipex(t_tab *var);
 void	exit_pipex(t_tab *var, int code);
 void	execve_error(t_tab *var);
 void	ft_putstr_fd(char *s, int fd);

@@ -6,7 +6,7 @@
 /*   By: htizi <htizi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 12:25:18 by htizi             #+#    #+#             */
-/*   Updated: 2021/08/20 22:46:49 by htizi            ###   ########.fr       */
+/*   Updated: 2021/08/23 00:36:32 by htizi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int	first_fork(char **argv, char **env, t_tab *var)
 	close(var->fd[1]);
 	exit_pipex(var, 666);
 	if (var->cmd != NULL)
-		var->vinc = 1;
+		var->cmd_1_is_found = 1;
 	return (0);
 }

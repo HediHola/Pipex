@@ -6,7 +6,7 @@
 /*   By: htizi <htizi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 22:37:00 by htizi             #+#    #+#             */
-/*   Updated: 2021/08/20 23:25:29 by htizi            ###   ########.fr       */
+/*   Updated: 2021/08/23 00:36:06 by htizi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PIPEX_H
@@ -32,7 +32,7 @@ typedef struct s_tab
 	int		status;
 	int		ext;
 	int		ret;
-	int		vinc;
+	int		cmd_1_is_found;
 	pid_t	first_pid;
 	pid_t	last_pid;
 }t_tab;
